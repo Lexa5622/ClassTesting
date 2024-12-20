@@ -1,18 +1,18 @@
 package com.company;
 
 public class Book {
-    private String tittle;
+    private String title;
     private int publishingYear ;
     private Author author;
 
     public Book(String tittle, int publishingYear, Author author){
-        this.tittle = tittle;
+        this.title = tittle;
         this.publishingYear = publishingYear;
         this.author = author;
     }
 
     public String getTittle() {
-        return tittle;
+        return title;
     }
 
     public int getPublishingYear() {
@@ -25,5 +25,23 @@ public class Book {
 
     public void setPublishingYear(int publishingYear) {
         this.publishingYear = publishingYear;
+    }
+
+    @Override
+    public String toString() {
+        return author.toString() + ": " + title ;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this.getClass() != other.getClass()) {
+            return false;
+        }
+        Book otherBook = (Book) other;
+        return title.equals(otherBook.title) && author.equals(otherBook.author);
+    }
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(title, author);
     }
 }
